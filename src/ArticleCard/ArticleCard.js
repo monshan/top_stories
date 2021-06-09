@@ -1,4 +1,4 @@
-const ArticleCard = ({ title, media }) => {
+export const ArticleCard = ({ title, media }) => {
   return (
     <div className="ArticleCard">
       <h2>{ title }</h2>
