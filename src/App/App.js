@@ -22,7 +22,13 @@ const App = () => {
       })
       .then(goodRes => {
         // console.log(goodRes.results);
-        setArticlesArray(goodRes.results);
+        if (section) {
+          setArticlesArray(goodRes.results);
+        }
+
+        if (!section) {
+          setArticlesArray('home');
+        }
       })
       .catch((badRes) => {
         // console.log(badRes);
@@ -30,17 +36,17 @@ const App = () => {
       })
   }
 
-  const helper = () => {
+  const userTopicUp = () => {
     const userTopic = document.getElementById('userTopic');
     return setSection(userTopic.value);
   }
 
   return (
     <div className="App">
-      <p>Eventual Container</p>
+      <p>Main App</p>
       <input type="text" id="userTopic" />
       <button
-        onClick={() => helper()}
+        onClick={() => userTopicUp()}
       >Submit</button>
       <ArticleGrid articles={ articlesArray } />
     </div>

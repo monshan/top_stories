@@ -15,7 +15,11 @@
 }
 
 .article-card__title-hover:hover {
-  opacity: 0.5;
+  opacity: 0.75;
+}
+
+.article-card__title-hover__p {
+  padding: 5px;
 }
 
 .article-card__img {
