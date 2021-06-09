@@ -6,7 +6,7 @@ import './App.css';
 
 const App = () => {
   const [section, setSection] = useState('');
-  const [articlesArray, setArticlesArray] = useState([]);
+  const [articlesArray, setArticlesArray] = useState(null);
 
   const allTopics = ['arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world'];
 
@@ -16,7 +16,8 @@ const App = () => {
   }
 
   const populate = () => {
-    return setArticlesArray(getArticles(section));
+    const results = getArticles(section);
+    return setArticlesArray(results);
   }
 
   return (
@@ -27,7 +28,7 @@ const App = () => {
         onClick={() => populate()}
       >Submit</button>
       <div>
-        <p>{ articlesArray[0] }</p>
+        <p>{ articlesArray }</p>
       </div>
     </div>
   )
