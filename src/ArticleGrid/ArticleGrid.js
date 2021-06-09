@@ -1,6 +1,7 @@
 import { ArticleCard } from '../ArticleCard/ArticleCard';
+import './ArticleGrid.css';
 
-export const ArticleGrid = articles => {
+export const ArticleGrid = ({ articles }) => {
 
   const chooseMediaSize = (options, desiredFormat) => {
     const desiredOption = options.find(image => image.format.toUpperCase() === desiredFormat.toUpperCase());
@@ -19,7 +20,7 @@ export const ArticleGrid = articles => {
   }
   
   return (
-    <div className="ArticleGrid">
+    <div className="article-grid">
       { renderCards() }
     </div>
   )

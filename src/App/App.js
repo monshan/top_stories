@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getHome, getArticles } from '../calls'; 
+import { getHome, getArticles } from '../calls';
+import { ArticleGrid } from '../ArticleGrid/ArticleGrid';
 import './App.css';
 
 const App = () => {
@@ -10,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     cleanGETbySection();
-  }, [])
+  }, [section])
 
   const cleanGETbySection = () => {
     getArticles(section)
@@ -41,6 +42,7 @@ const App = () => {
       <button
         onClick={() => helper()}
       >Submit</button>
+      <ArticleGrid articles={ articlesArray } />
     </div>
   )
 }

@@ -1,8 +1,10 @@
+import './ArticleCard.css';
+
 export const ArticleCard = ({ title, media }) => {
   return (
     <div className="ArticleCard">
-      <h2>{ title }</h2>
-      <image src={media} />
+      {/* <p>{ title }</p> */}
+      <img src={media} />
     </div>
   )
 }
