@@ -5,16 +5,18 @@ import './App.css';
 
 
 const App = () => {
-  const [topic, setTopic] = useState('');
+  const [section, setSection] = useState('');
   const [articlesArray, setArticlesArray] = useState([]);
+
+  const allTopics = ['arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world'];
 
   const helper = () => {
     const userTopic = document.getElementById('userTopic');
-    return setTopic(userTopic.value);
+    return setSection(userTopic.value);
   }
 
   const populate = () => {
-    return setArticlesArray(getArticles(topic));
+    return setArticlesArray(getArticles(section));
   }
 
   return (
