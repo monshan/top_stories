@@ -6,7 +6,7 @@ export const ArticleCard = ({ title, media }) => {
       <div className="article-card__title-hover">
         <p>{ title }</p>
       </div>
-      <img src={media} />
+      <img src={media} className="article-card__img"/>
     </div>
   )
 }

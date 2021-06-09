@@ -11,9 +11,14 @@
   position: absolute;
   background-color: #222222;
   color: white;
-  transition: 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .article-card__title-hover:hover {
   opacity: 0.5;
+}
+
+.article-card__img {
+  min-width: 100%;
+  min-height: 100%;
 }
