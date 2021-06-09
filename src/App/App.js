@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getArticles } from '../calls'; 
+import { getHome, getArticles } from '../calls'; 
 import './App.css';
 
 const App = () => {
