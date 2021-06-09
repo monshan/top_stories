@@ -1,4 +1,6 @@
 .article-grid {
   display: grid;
   grid-template-columns: repeat(8, minmax(100px, 1fr));
+  gap: 5px;
+  padding: 5px;
 }
