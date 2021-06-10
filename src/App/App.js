@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
-// import { getHome, getArticles } from '../calls';
 import { ArticleGrid } from '../ArticleGrid/ArticleGrid';
 import './App.css';
 import { ArticleCard } from '../ArticleCard/ArticleCard';

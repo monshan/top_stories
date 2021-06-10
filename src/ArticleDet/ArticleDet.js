@@ -1,9 +1,8 @@
-import { Route } from 'react-router-dom';
-
-export const ArticleDet = () => {
+export const ArticleDet = ({ title, abstract }) => {
   return (
     <div className="article-det">
-      
+      <h2>{ title }</h2>
+      <p>{ abstract }</p>
     </div>
   ) 
 }

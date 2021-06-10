@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { Route, Link } from 'react-router-dom';
 import { getHome, getArticles } from '../calls';
 import { ArticleCard } from '../ArticleCard/ArticleCard';
+import { ArticleDet } from '../ArticleDet/ArticleDet';
 import './ArticleGrid.css';
 
 export const ArticleGrid = ({ section }) => {
@@ -42,17 +44,27 @@ export const ArticleGrid = ({ section }) => {
   const renderCards = () => {
     return sectionArticles.map(art => {
       return (
-        <ArticleCard 
-          media={ chooseMediaSize(art.multimedia, 'Normal') }
-          title={ art.title }
-        />
+        <Link to={`/${section}/${art.created_date}`}>
+          <ArticleCard 
+            media={ chooseMediaSize(art.multimedia, 'Normal') }
+            title={ art.title }
+          />
+        </Link>
       )
+    })
+  }
+
+  const renderArticleDets = () => {
+    return sectionArticles.map(art => {
+      <Route path={`/${section}/${art.created_date}`}
+        children={ <ArticleDet abstract={art.abstract} title={ art.title }/> } />
     })
   }
   
   return (
     <div className="article-grid">
-      { renderCards() }
+      <Route path={`/${section}`} children={ renderCards() } />
+      { renderArticleDets() }
     </div>
   )
 }
