@@ -4,6 +4,7 @@ import './ArticleGrid.css';
 export const ArticleGrid = ({ articles }) => {
 
   const chooseMediaSize = (options, desiredFormat) => {
+    if (!options) return 'nyt.png';
     const desiredOption = options.find(image => image.format.toUpperCase() === desiredFormat.toUpperCase());
     return desiredOption.url;
   }
