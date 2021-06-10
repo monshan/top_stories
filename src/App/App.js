@@ -8,13 +8,6 @@ import { ArticleCard } from '../ArticleCard/ArticleCard';
 const App = () => {
   const allTopics = ['arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world'];
 
-  
-
-  // const userTopicUp = () => {
-  //   const userTopic = document.getElementById('userTopic');
-  //   return setSection(userTopic.value);
-  // }
-
   const generateNavLinks = () => {
     return allTopics.map(topic => {
       return <NavLink to={ `/${topic}` } className="NavLink">{ topic }</NavLink>
@@ -31,18 +24,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <p>Main App</p>
+      <h1>Top Stories</h1>
       <div className="Navigation">
         { generateNavLinks() }
       </div>
-      {/* <input type="text" id="userTopic" />
-      <button
-        onClick={() => userTopicUp()}
-      >Submit</button> */}
       <Switch>
         { generateRoutes() }
       </Switch>
-      {/* <ArticleGrid articles={ articlesArray } /> */}
     </div>
   )
 }
