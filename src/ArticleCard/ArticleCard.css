@@ -1,0 +1,28 @@
+.article-card {
+  max-width: fit-content;
+  overflow: hidden;
+  position: relative;
+}
+
+.article-card__title-hover {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #222222;
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.article-card__title-hover:hover {
+  opacity: 0.75;
+}
+
+.article-card__title-hover__p {
+  padding: 5px;
+}
+
+.article-card__img {
+  min-width: 100%;
+  min-height: 100%;
+}
