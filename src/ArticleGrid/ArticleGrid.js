@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, useRouteMatch } from 'react-router-dom';
 import { getHome, getArticles } from '../calls';
 import { ArticleCard } from '../ArticleCard/ArticleCard';
 import { ArticleDet } from '../ArticleDet/ArticleDet';
@@ -7,6 +7,7 @@ import './ArticleGrid.css';
 
 export const ArticleGrid = ({ section }) => {
   const [sectionArticles, setSectionArticles] = useState([]);
+  let { path, url } = useRouteMatch();
 
   useEffect(() => {
     cleanGETbySection();
@@ -24,10 +25,6 @@ export const ArticleGrid = ({ section }) => {
         if (section) {
           setSectionArticles(goodRes.results);
         }
-
-        if (!section) {
-          setSectionArticles('home');
-        }
       })
       .catch((badRes) => {
         // console.log(badRes);
@@ -44,7 +41,7 @@ export const ArticleGrid = ({ section }) => {
   const renderCards = () => {
     return sectionArticles.map(art => {
       return (
-        <Link to={`/${section}/${art.created_date}`}>
+        <Link to={`${path}/${art.created_date}`}>
           <ArticleCard 
             media={ chooseMediaSize(art.multimedia, 'Normal') }
             title={ art.title }
@@ -53,18 +50,10 @@ export const ArticleGrid = ({ section }) => {
       )
     })
   }
-
-  const renderArticleDets = () => {
-    return sectionArticles.map(art => {
-      <Route path={`/${section}/${art.created_date}`}
-        children={ <ArticleDet abstract={art.abstract} title={ art.title }/> } />
-    })
-  }
   
   return (
     <div className="article-grid">
-      <Route path={`/${section}`} children={ renderCards() } />
-      { renderArticleDets() }
+      { renderCards() }
     </div>
   )
 }

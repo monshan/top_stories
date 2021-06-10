@@ -1,8 +1,11 @@
-export const ArticleDet = ({ title, abstract }) => {
+import { useParams } from 'react-router-dom';
+
+export const ArticleDet = ({ match }) => {
+  let { created } = useParams(); 
+
   return (
     <div className="article-det">
-      <h2>{ title }</h2>
-      <p>{ abstract }</p>
+      <p> Made it to the article details page, created on { created } </p>
     </div>
   ) 
 }

@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { ArticleGrid } from '../ArticleGrid/ArticleGrid';
+import { ArticleDet } from '../ArticleDet/ArticleDet';
 import './App.css';
-import { ArticleCard } from '../ArticleCard/ArticleCard';
 
 const App = () => {
-  const allTopics = ['arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world'];
+  const allTopics = ['arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world'];
 
   const generateNavLinks = () => {
     return allTopics.map(topic => {
@@ -16,7 +15,10 @@ const App = () => {
   const generateRoutes = () => {
     return allTopics.map(topic => {
       return (
-        <Route path={ `/${topic}` } children={ <ArticleGrid section={ topic } /> } />
+        <>
+        <Route exact path={ `/${topic}` } render={() => <ArticleGrid section={ topic } /> } />
+        <Route path={ `/${topic}/:created` } component={ ArticleDet } />
+        </>
       )
     })
   }
@@ -27,9 +29,8 @@ const App = () => {
       <div className="Navigation">
         { generateNavLinks() }
       </div>
-      <Switch>
+        <Route exact path="/" render={() => <ArticleGrid section="home" /> } />
         { generateRoutes() }
-      </Switch>
     </div>
   )
 }
