@@ -13,7 +13,7 @@ export const ArticleGrid = ({ articles }) => {
     return articles.map(art => {
       return (
         <ArticleCard 
-          media={ chooseMediaSize(art.multimedia, 'Normal') }
+          media={ chooseMediaSize(art.multimedia, 'superJumbo') }
           title={ art.title }
         />
       )
