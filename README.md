@@ -4,7 +4,7 @@
 
 __Synopsis__
 
-A visually forward web app for browsing the stop NYT stories of the day
+A visually forward web app for browsing the top NYT stories of the day
 
 __User Capabilities__
 - User can click on any topic of their choice and observe a visual grid of articles relating to that topic
