@@ -36,6 +36,33 @@ export const ArticleGrid = ({ section }) => {
     const desiredOption = options.find(image => image.format.toUpperCase() === desiredFormat.toUpperCase());
     return desiredOption.url;
   }
+
+  const potentialQueries = () => {
+    return sectionArticles.reduce((allQueries, article) => {
+      article.des_facet.forEach(facet => {
+        if (!allQueries.includes(facet.toUpperCase())) {
+          allQueries.push(facet.toUpperCase())
+        }
+      })
+      article.org_facet.forEach(facet => {
+        if (!allQueries.includes(facet.toUpperCase())) {
+          allQueries.push(facet.toUpperCase())
+        }
+      })
+      article.per_facet.forEach(facet => {
+        if (!allQueries.includes(facet.toUpperCase())) {
+          allQueries.push(facet.toUpperCase())
+        }
+      })
+      article.geo_facet.forEach(facet => {
+        if (!allQueries.includes(facet.toUpperCase())) {
+          allQueries.push(facet.toUpperCase())
+        }
+      })
+      allQueries.push(article.title.toUpperCase())
+      return allQueries
+    }, [])
+  }
   
   const renderCards = () => {
     if (formValue) {
@@ -45,7 +72,7 @@ export const ArticleGrid = ({ section }) => {
         if (potentialQueries.includes(formValue.toUpperCase())) {
           return (
             <Link to={`${path}/short_url=${art.short_url}`}>
-              <ArticleCard 
+              <ArticleCard
                 media={ chooseMediaSize(art.multimedia, 'Normal') }
                 title={ art.title }
               />
@@ -94,7 +121,7 @@ export const ArticleGrid = ({ section }) => {
         render={() => {
           return (
             <>
-            <Search section={section} setFormValue={setFormValue} />
+            <Search section={section} setFormValue={setFormValue} potentialQueries={ potentialQueries() }/>
             <div className="article-grid">
               { renderCards() }
             </div>
