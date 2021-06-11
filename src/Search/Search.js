@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-const Search = ({ section, setFormValue }) => {
+export const Search = ({ section, setFormValue }) => {
 
-  const currentFormValue = document.getElementById('searchForm').value;
+  const targetForm = document.getElementById('searchForm');
 
   return (
     <div>
       <label for="searchForm">Search {section} for </label>
-      <input type="text" id="searchForm" onChange={() => setFormValue(currentFormValue)}/>
+      <input type="text" id="searchForm" onChange={() => setFormValue(targetForm.value)}/>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { Route, Link, useRouteMatch } from 'react-router-dom';
 import { getArticles } from '../calls';
 import { ArticleCard } from '../ArticleCard/ArticleCard';
 import { ArticleDet } from '../ArticleDet/ArticleDet';
+import { Search } from '../Search/Search';  
 import './ArticleGrid.css';
 
 export const ArticleGrid = ({ section }) => {
@@ -76,9 +77,12 @@ export const ArticleGrid = ({ section }) => {
         exact path={`/${section}`}
         render={() => {
           return (
+            <>
+            <Search section={section} setFormValue={setFormValue} />
             <div className="article-grid">
               { renderCards() }
             </div>
+            </>
           )
         }} />
       { renderDetailsRoutes() }
