@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "results": [{
+    "title": "Dior comes back to Denver",
+    "byline": "by Marika",
+    "multimedia": [{
+      "format": "Normal",
+      "url": "https://vanda-production-assets.s3.amazonaws.com/2019/01/30/13/22/51/57be2131-b380-4566-b629-6c90530e1178/21.jpg"
+    }, {
+      "format": "superLarge",
+      "url": "https://d1otfi4uhdq3fm.cloudfront.net/wp-content/uploads/2020/07/30165021/DIOR_DESIGNERS-OF-DREAMS_EXHIBITION_2021_SCENOGRAPHY_%C2%A9Dirk-Weiblen_9-1920x1280.jpg"
+    }],
+    "short_url": "https://example-for-cypress/123"
+  }]
+}

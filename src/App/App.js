@@ -16,7 +16,7 @@ const App = () => {
 
   const generateNavLinks = () => {
     return allTopics.map(topic => {
-      return <NavLink to={ `/${topic}` } className="NavLink" activeStyle={ NavLinkActiveStyle() }>{ topic }.</NavLink>
+      return <NavLink to={ `/${topic}` } className="NavLink" activeStyle={ NavLinkActiveStyle() } data-cy={`NavLink-${topic}`}>{ topic }.</NavLink>
     })
   }
 
@@ -34,7 +34,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>Top Stories</h1>
-      <div className="Navigation">
+      <div className="Navigation" data-cy="Navigation">
         { generateNavLinks() }
       </div>
         <Switch>
