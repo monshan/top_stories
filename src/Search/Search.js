@@ -10,6 +10,11 @@ export const Search = ({ section, setFormValue, potentialQueries }) => {
     })
   }
 
+  const clearForm = () => {
+    targetForm.value = '';
+    setFormValue('');
+  }
+
   return (
     <div className="Search">
       <label for="searchForm">Search {section} for ... </label>
@@ -17,6 +22,7 @@ export const Search = ({ section, setFormValue, potentialQueries }) => {
       <datalist id="searchOptions">
         { renderDataOptions() }
       </datalist>
+      <button className="search__clear" onClick={() => clearForm()}>Clear</button>
     </div>
   )
 }

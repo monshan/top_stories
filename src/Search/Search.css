@@ -1,3 +1,11 @@
 .Search {
   margin: 2.5rem 0;
 }
+
+.search__clear {
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  font-family: var(--font-accent);
+  font-style: italic;
+}
