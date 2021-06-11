@@ -38,6 +38,22 @@ export const ArticleGrid = ({ section }) => {
   }
   
   const renderCards = () => {
+    if (formValue) {
+      return sectionArticles.map(art => {
+        const potentialQueries = art.des_facet.concat(art.org_facet).concat(art.per_facet).concat(art.geo_facet).map(keyword => keyword.toUpperCase());
+        potentialQueries.push(art.title.toUpperCase())
+        if (potentialQueries.includes(formValue.toUpperCase())) {
+          return (
+            <Link to={`${path}/short_url=${art.short_url}`}>
+              <ArticleCard 
+                media={ chooseMediaSize(art.multimedia, 'Normal') }
+                title={ art.title }
+              />
+            </Link>
+          )
+        }
+      })
+    }
     return sectionArticles.map(art => {
       return (
         <Link to={`${path}/short_url=${art.short_url}`}>
