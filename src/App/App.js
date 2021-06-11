@@ -16,7 +16,7 @@ const App = () => {
 
   const generateNavLinks = () => {
     return allTopics.map(topic => {
-      return <NavLink to={ `/${topic}` } className="NavLink" activeStyle={ NavLinkActiveStyle() }>{ topic }.</NavLink>
+      return <NavLink to={ `/${topic}` } className="NavLink" activeStyle={ NavLinkActiveStyle() } data-cy={`NavLink-${topic}`}>{ topic }.</NavLink>
     })
   }
 
