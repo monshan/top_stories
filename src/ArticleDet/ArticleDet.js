@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './ArticleDet.css'
 
-export const ArticleDet = ({ title, abstract, byline, section, subsection, nyt_url, multimedia }) => {
+export const ArticleDet = ({ title, abstract, byline, historySection, section, subsection, nyt_url, multimedia, checkHomePath }) => {
+
+  let history = useHistory();
 
   const includeSubsection = () => {
     if (subsection) {
@@ -21,7 +23,7 @@ export const ArticleDet = ({ title, abstract, byline, section, subsection, nyt_u
       <h4>{section}{includeSubsection()}</h4>
       <p>{abstract}</p>
       <div className="article-det__buttons">
-        <button className="article-det__button __go-back ">Go Back </button>
+        <button className="article-det__button __go-back" onClick={() => history.goBack()}>Go Back</button>
         <a href={nyt_url} target="_blank">
           <button className="article-det__button __read-on-nyt">Read on NYT</button>
         </a>

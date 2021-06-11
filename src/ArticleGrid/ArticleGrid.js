@@ -7,7 +7,7 @@ import { Search } from '../Search/Search';
 import './ArticleGrid.css';
 
 export const ArticleGrid = ({ section }) => {
-  let { path } = useRouteMatch();
+  let { url } = useRouteMatch();
   const [sectionArticles, setSectionArticles] = useState([]);
   const [formValue, setFormValue] = useState('')
 
@@ -37,8 +37,8 @@ export const ArticleGrid = ({ section }) => {
     return desiredOption.url;
   }
 
-  const checkHomePath = () => {
-    if (section === 'home') return '';
+  const checkHomePath = isHome => {
+    if (isHome === 'home') return '';
     return section;
   }
 
@@ -76,7 +76,7 @@ export const ArticleGrid = ({ section }) => {
         potentialQueries.push(art.title.toUpperCase())
         if (potentialQueries.includes(formValue.toUpperCase())) {
           return (
-            <Link to={`${path}/short_url=${art.short_url}`}>
+            <Link to={`${url}/short_url=${art.short_url}`}>
               <ArticleCard
                 media={ chooseMediaSize(art.multimedia, 'Normal') }
                 title={ art.title }
@@ -88,7 +88,7 @@ export const ArticleGrid = ({ section }) => {
     }
     return sectionArticles.map(art => {
       return (
-        <Link to={`${path}/short_url=${art.short_url}`}>
+        <Link to={`${url}/short_url=${art.short_url}`}>
           <ArticleCard 
             media={ chooseMediaSize(art.multimedia, 'Normal') }
             title={ art.title }
@@ -102,9 +102,10 @@ export const ArticleGrid = ({ section }) => {
     return sectionArticles.map(art => {
       return (
         <Route
-          path={`${path}/short_url=${art.short_url}`}
+          path={`${url}/short_url=${art.short_url}`}
           render={() =>
             <ArticleDet 
+              historySection={section}
               section={art.section}
               subsection={art.subsection}
               title={art.title}
@@ -113,6 +114,7 @@ export const ArticleGrid = ({ section }) => {
               nyt_url={art.url}
               multimedia={art.multimedia}              
               chooseMediaSize={chooseMediaSize}
+              checkHomePath={checkHomePath}
             />}
         />
       )
@@ -122,7 +124,7 @@ export const ArticleGrid = ({ section }) => {
   return (
     <div className="page">
       <Route 
-        exact path={`/${ checkHomePath() }`}
+        exact path={`/${ checkHomePath(section) }`}
         render={() => {
           return (
             <>
