@@ -7,7 +7,7 @@ const App = () => {
 
   const generateNavLinks = () => {
     return allTopics.map(topic => {
-      return <NavLink to={ `/${topic}` } className="NavLink">{ topic }</NavLink>
+      return <NavLink to={ `/${topic}` } className="NavLink">{ topic }.</NavLink>
     })
   }
 

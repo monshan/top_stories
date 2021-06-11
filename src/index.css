@@ -1,19 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,900&display=swap&family=Cabin&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?'); */
 
-h1,
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
 h2,
 h3,
 h4,
 h5,
 h6 {
   font-family: 'Playfair Display', serif;
-  font-weight: 900;
+  font-weight: 400;
   font-style: italic;
 }
 
 p,
 a {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cabin', sans-serif;
   font-weight: 400;
 }
 
