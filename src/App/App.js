@@ -1,6 +1,5 @@
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import { ArticleGrid } from '../ArticleGrid/ArticleGrid';
-import { ArticleDet } from '../ArticleDet/ArticleDet';
 import './App.css';
 
 const App = () => {
@@ -15,10 +14,10 @@ const App = () => {
   const generateRoutes = () => {
     return allTopics.map(topic => {
       return (
-        <>
-        <Route exact path={ `/${topic}` } render={() => <ArticleGrid section={ topic } /> } />
-        <Route path={ `/${topic}/:created` } component={ ArticleDet } />
-        </>
+        <Route 
+          path={ `/${topic}` } 
+          render={() => <ArticleGrid section={topic}/>}
+        />
       )
     })
   }
@@ -29,8 +28,10 @@ const App = () => {
       <div className="Navigation">
         { generateNavLinks() }
       </div>
-        <Route exact path="/" render={() => <ArticleGrid section="home" /> } />
-        { generateRoutes() }
+        <Switch>
+          <Route exact path="/" render={() => <ArticleGrid section="home" /> } />
+          { generateRoutes() }
+        </Switch>
     </div>
   )
 }
