@@ -37,6 +37,11 @@ export const ArticleGrid = ({ section }) => {
     return desiredOption.url;
   }
 
+  const checkHomePath = () => {
+    if (section === 'home') return '';
+    return section;
+  }
+
   const potentialQueries = () => {
     return sectionArticles.reduce((allQueries, article) => {
       article.des_facet.forEach(facet => {
@@ -117,7 +122,7 @@ export const ArticleGrid = ({ section }) => {
   return (
     <div className="page">
       <Route 
-        exact path={`/${section}`}
+        exact path={`/${ checkHomePath() }`}
         render={() => {
           return (
             <>
