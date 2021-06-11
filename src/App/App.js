@@ -34,7 +34,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>Top Stories</h1>
-      <div className="Navigation">
+      <div className="Navigation" data-cy="Navigation">
         { generateNavLinks() }
       </div>
         <Switch>
