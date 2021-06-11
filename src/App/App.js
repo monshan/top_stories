@@ -1,54 +1,37 @@
-import { useEffect, useState } from 'react';
-import { getHome, getArticles } from '../calls';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import { ArticleGrid } from '../ArticleGrid/ArticleGrid';
 import './App.css';
 
 const App = () => {
-  const [section, setSection] = useState('');
-  const [articlesArray, setArticlesArray] = useState([]);
+  const allTopics = ['arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world'];
 
-  const allTopics = ['arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate', 'science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world'];
-
-  useEffect(() => {
-    cleanGETbySection();
-  }, [section])
-
-  const cleanGETbySection = () => {
-    getArticles(section)
-      .then(res => {
-        // console.log(res);
-        if (!res.ok) throw new Error();
-        return res.json();
-      })
-      .then(goodRes => {
-        // console.log(goodRes.results);
-        if (section) {
-          setArticlesArray(goodRes.results);
-        }
-
-        if (!section) {
-          setArticlesArray('home');
-        }
-      })
-      .catch((badRes) => {
-        // console.log(badRes);
-        return badRes;
-      })
+  const generateNavLinks = () => {
+    return allTopics.map(topic => {
+      return <NavLink to={ `/${topic}` } className="NavLink">{ topic }.</NavLink>
+    })
   }
 
-  const userTopicUp = () => {
-    const userTopic = document.getElementById('userTopic');
-    return setSection(userTopic.value);
+  const generateRoutes = () => {
+    return allTopics.map(topic => {
+      return (
+        <Route 
+          path={ `/${topic}` } 
+          render={() => <ArticleGrid section={topic}/>}
+        />
+      )
+    })
   }
 
   return (
     <div className="App">
-      <p>Main App</p>
-      <input type="text" id="userTopic" />
-      <button
-        onClick={() => userTopicUp()}
-      >Submit</button>
-      <ArticleGrid articles={ articlesArray } />
+      <h1>Top Stories</h1>
+      <div className="Navigation">
+        { generateNavLinks() }
+      </div>
+        <Switch>
+          <Route exact path="/" render={() => <ArticleGrid section="home" /> } />
+          { generateRoutes() }
+        </Switch>
     </div>
   )
 }
