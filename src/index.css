@@ -32,7 +32,8 @@ a:visited {
 }
 
 :root {
-
+  font-size: 16px;
+  --black: #222222;
 }
 
 body {

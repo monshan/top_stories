@@ -1,0 +1,35 @@
+.article-det {
+  margin: 1rem;
+}
+
+.article-det__img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.article-det__buttons {
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.article-det__button {
+  border-radius: 0.75rem;
+  width: 10rem;
+  height: 3rem;
+  border: none;
+  margin: 0 1rem;
+}
+
+.__go-back {
+  color: var(--black);
+  background-color: transparent;
+}
+
+.__read-on-nyt {
+  color: white;
+  background-color: var(--black);
+}

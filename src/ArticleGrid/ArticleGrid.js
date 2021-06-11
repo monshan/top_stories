@@ -38,7 +38,7 @@ export const ArticleGrid = ({ section }) => {
   const renderCards = () => {
     return sectionArticles.map(art => {
       return (
-        <Link to={`${path}/${art.created_date}`}>
+        <Link to={`${path}/short_url=${art.short_url}`}>
           <ArticleCard 
             media={ chooseMediaSize(art.multimedia, 'Normal') }
             title={ art.title }
@@ -52,12 +52,17 @@ export const ArticleGrid = ({ section }) => {
     return sectionArticles.map(art => {
       return (
         <Route
-          path={`${path}/${art.created_date}`}
+          path={`${path}/short_url=${art.short_url}`}
           render={() =>
             <ArticleDet 
+              section={art.section}
+              subsection={art.subsection}
               title={art.title}
               abstract={art.abstract}
               byline={art.byline}
+              nyt_url={art.url}
+              multimedia={art.multimedia}              
+              chooseMediaSize={chooseMediaSize}
             />}
         />
       )
