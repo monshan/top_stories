@@ -8,6 +8,7 @@ import './ArticleGrid.css';
 export const ArticleGrid = ({ section }) => {
   let { path } = useRouteMatch();
   const [sectionArticles, setSectionArticles] = useState([]);
+  const [formValue, setFormValue] = useState('')
 
   useEffect(() => {
     cleanGETbySection();
