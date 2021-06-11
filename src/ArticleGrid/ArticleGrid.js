@@ -66,11 +66,16 @@ export const ArticleGrid = ({ section }) => {
 
   return (
     <div className="page">
-      <div className="article-grid">
-        { renderCards() }
-      </div>
+      <Route 
+        exact path={`/${section}`}
+        render={() => {
+          return (
+            <div className="article-grid">
+              { renderCards() }
+            </div>
+          )
+        }} />
       { renderDetailsRoutes() }
     </div>
-    
   )
 }
