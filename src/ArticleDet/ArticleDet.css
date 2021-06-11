@@ -22,6 +22,11 @@
   height: 3rem;
   border: none;
   margin: 0 1rem;
+  transition: 0.2s ease-in-out;
+}
+
+.article-det__button:hover {
+  transform: translateY(-0.5rem);
 }
 
 .__go-back {
