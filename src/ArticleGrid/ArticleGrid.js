@@ -3,11 +3,13 @@ import { Route, Link, useRouteMatch } from 'react-router-dom';
 import { getArticles } from '../calls';
 import { ArticleCard } from '../ArticleCard/ArticleCard';
 import { ArticleDet } from '../ArticleDet/ArticleDet';
+import { Search } from '../Search/Search';  
 import './ArticleGrid.css';
 
 export const ArticleGrid = ({ section }) => {
   let { path } = useRouteMatch();
   const [sectionArticles, setSectionArticles] = useState([]);
+  const [formValue, setFormValue] = useState('')
 
   useEffect(() => {
     cleanGETbySection();
@@ -34,8 +36,51 @@ export const ArticleGrid = ({ section }) => {
     const desiredOption = options.find(image => image.format.toUpperCase() === desiredFormat.toUpperCase());
     return desiredOption.url;
   }
+
+  const potentialQueries = () => {
+    return sectionArticles.reduce((allQueries, article) => {
+      article.des_facet.forEach(facet => {
+        if (!allQueries.includes(facet.toUpperCase())) {
+          allQueries.push(facet.toUpperCase())
+        }
+      })
+      article.org_facet.forEach(facet => {
+        if (!allQueries.includes(facet.toUpperCase())) {
+          allQueries.push(facet.toUpperCase())
+        }
+      })
+      article.per_facet.forEach(facet => {
+        if (!allQueries.includes(facet.toUpperCase())) {
+          allQueries.push(facet.toUpperCase())
+        }
+      })
+      article.geo_facet.forEach(facet => {
+        if (!allQueries.includes(facet.toUpperCase())) {
+          allQueries.push(facet.toUpperCase())
+        }
+      })
+      allQueries.push(article.title.toUpperCase())
+      return allQueries
+    }, [])
+  }
   
   const renderCards = () => {
+    if (formValue) {
+      return sectionArticles.map(art => {
+        const potentialQueries = art.des_facet.concat(art.org_facet).concat(art.per_facet).concat(art.geo_facet).map(keyword => keyword.toUpperCase());
+        potentialQueries.push(art.title.toUpperCase())
+        if (potentialQueries.includes(formValue.toUpperCase())) {
+          return (
+            <Link to={`${path}/short_url=${art.short_url}`}>
+              <ArticleCard
+                media={ chooseMediaSize(art.multimedia, 'Normal') }
+                title={ art.title }
+              />
+            </Link>
+          )
+        }
+      })
+    }
     return sectionArticles.map(art => {
       return (
         <Link to={`${path}/short_url=${art.short_url}`}>
@@ -75,9 +120,12 @@ export const ArticleGrid = ({ section }) => {
         exact path={`/${section}`}
         render={() => {
           return (
+            <>
+            <Search section={section} setFormValue={setFormValue} potentialQueries={ potentialQueries() }/>
             <div className="article-grid">
               { renderCards() }
             </div>
+            </>
           )
         }} />
       { renderDetailsRoutes() }
