@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Top Stories
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Printing NYT Newspapers](https://media.giphy.com/media/5b9iSaucUKpukkTQpG/giphy.gif)
 
-## Available Scripts
+__Synopsis__
 
-In the project directory, you can run:
+A visually forward web app for browsing the stop NYT stories of the day
 
-### `npm start`
+__User Capabilities__
+- User can click on any topic of their choice and observe a visual grid of articles relating to that topic
+- User can utilize the search bar to query articles by various keywords such as title, people, and location
+- User hover over any image to see the article title fade in
+- User can click on any image to be taken to the 'detailed' view of their article of choice
+- User can utilize the two buttons at the bottom of the 'detailed' view to:
+  - Open the article on NYT
+  - Return to their topic section of choice 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React.js (bootstrapped with create-react-app)
+  - React Router
+  - Hooks
 
-### `npm test`
+- JSX / HTML
+- JavaScript ECMA6
+- CSS3
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Challenges
 
-### `npm run build`
+__Implementing React Router__
+- Ensuring that the <code>/</code> path hits the 'home' endpoint
+- No additional calls are being made upon render of the ArticleDetails component
+  - Which limits the capabilities of the useHistory and useMatchPath hooks
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+__First time working with a process.env variable__
+- Though not difficult to implement, took some additional research to understand how create-react-app compiles
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Next Iterations
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+__Responsiveness__
+  - Getting breakpoints down to mobile screen widths of 320px would be the next goal
+  - Apply alt text to ArticleCard images
 
-### `npm run eject`
+__Testing__
+  - Testing is likely at 25 - 30 % coverage at the time of writing this README
+  - Ensuring that stubbing is working properly will be essential to continuing the E2E testing process
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+__Styling__
+  - Element transitions at present are very sharp due to lack of easing
+  
