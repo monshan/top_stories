@@ -4,7 +4,7 @@
 
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(8, minmax(100px, 1fr));
-  gap: 5px;
-  padding: 5px;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  grid-template-rows: auto;
+  gap: 0.5rem;
 }
